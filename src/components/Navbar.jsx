@@ -18,6 +18,8 @@ export const Navbar = () => {
 			h="90px"
 			backgroundColor={isDarkMode ? 'blackAlpha.900' : '#101b76'}
 			display={'flex'}
+			alignItems="center"
+			justifyContent={'space-evenly'}
 		>
 			<Text
 				sx={{ marginTop: '1%', color: 'white', marginLeft: '30px' }}
@@ -31,11 +33,11 @@ export const Navbar = () => {
 				sx={{ marginLeft: '30%', marginTop: '1%', color: 'white' }}
 				htmlSize={4}
 				sixe="md"
-				width={500}
+				width={300}
 				variant="filled"
 				placeholder="Introduce aqui el elemento a buscar"
 			/>
-			<Stack direction={'row'} mt="1%" gap="5" ml="60">
+			<Stack direction={'row'} mt="1%" gap="5" ml="200">
 				<Button
 					variant={'outline'}
 					colorScheme={'whiteAlpha'}
@@ -60,6 +62,14 @@ export const Navbar = () => {
 					sx={{ borderRadius: '100' }}
 				>
 					Sponsor {<HeartSvg />}
+				</Button>
+				<Button
+					variant={'solid'}
+					colorScheme={'whiteAlpha'}
+					mt={'1%'}
+					sx={{ borderRadius: '100' }}
+				>
+					Sign In / Sign Up
 				</Button>
 			</Stack>
 		</Box>
