@@ -4,13 +4,17 @@ import { GithubSvg } from '../svg/GithubSvg'
 import { SunSvg } from '../svg/SunSvg'
 import { MoonSvg } from '../svg/MoonSvg'
 import { HeartSvg } from '../svg/HeartSvg'
+import { useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
 	const [isDarkMode, setIsDarkMode] = useState(false)
+	const navigate = useNavigate()
 
 	const handleModeChange = () => {
 		setIsDarkMode(!isDarkMode)
-		console.log(isDarkMode)
+	}
+	const handleNavigate = () => {
+		navigate('/auth')
 	}
 	return (
 		<Box
@@ -64,6 +68,7 @@ export const Navbar = () => {
 					Sponsor {<HeartSvg />}
 				</Button>
 				<Button
+					onClick={handleNavigate}
 					variant={'solid'}
 					colorScheme={'whiteAlpha'}
 					mt={'1%'}
