@@ -1,11 +1,13 @@
 import './App.css'
 import { Navbar } from './components/Navbar'
+import { SongNavigator } from './components/SongNavigator/SongNavigator'
 
 function App() {
 	return (
-		<div className="App">
+		<>
 			<Navbar />
-		</div>
+			<SongNavigator />
+		</>
 	)
 }
 

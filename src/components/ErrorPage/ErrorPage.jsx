@@ -4,9 +4,9 @@ import { redirect, useNavigate } from 'react-router-dom'
 import { ArrowLeftSvg } from '../../svg/ArrowLeftSvg'
 
 export const ErrorPage = () => {
+	const navigate = useNavigate()
 	const handleClick = () => {
-		const navigate = useNavigate()
-		redirect('/')
+		navigate(-1)
 	}
 	return (
 		<>

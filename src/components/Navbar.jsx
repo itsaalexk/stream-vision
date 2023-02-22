@@ -1,18 +1,14 @@
 import { Box, Button, Input, Stack, Text } from '@chakra-ui/react'
-import { useState } from 'react'
 import { GithubSvg } from '../svg/GithubSvg'
 import { SunSvg } from '../svg/SunSvg'
 import { MoonSvg } from '../svg/MoonSvg'
 import { HeartSvg } from '../svg/HeartSvg'
 import { useNavigate } from 'react-router-dom'
+import { useColor } from '../hooks/useColor'
 
 export const Navbar = () => {
-	const [isDarkMode, setIsDarkMode] = useState(false)
 	const navigate = useNavigate()
-
-	const handleModeChange = () => {
-		setIsDarkMode(!isDarkMode)
-	}
+	const { handleModeChange, darkMode } = useColor()
 	const handleNavigate = () => {
 		navigate('/auth')
 	}
@@ -20,7 +16,7 @@ export const Navbar = () => {
 		<Box
 			w="100%"
 			h="90px"
-			backgroundColor={isDarkMode ? 'blackAlpha.900' : '#101b76'}
+			backgroundColor={darkMode ? 'blackAlpha.900' : '#101b76'}
 			display={'flex'}
 			alignItems="center"
 			justifyContent={'space-evenly'}
@@ -34,14 +30,14 @@ export const Navbar = () => {
 			</Text>
 
 			<Input
-				sx={{ marginLeft: '30%', marginTop: '1%', color: 'white' }}
+				sx={{ marginLeft: '10%', marginTop: '1%', color: 'white' }}
 				htmlSize={4}
-				sixe="md"
-				width={300}
-				variant="filled"
+				size="md"
+				width={400}
+				variant="outline"
 				placeholder="Introduce aqui el elemento a buscar"
 			/>
-			<Stack direction={'row'} mt="1%" gap="5" ml="200">
+			<Stack direction={'row'} mt="1%" gap="4" ml="200">
 				<Button
 					variant={'outline'}
 					colorScheme={'whiteAlpha'}
@@ -57,7 +53,7 @@ export const Navbar = () => {
 					mt={'1%'}
 					onClick={handleModeChange}
 				>
-					{isDarkMode ? <MoonSvg /> : <SunSvg />}
+					{darkMode ? <SunSvg /> : <MoonSvg />}
 				</Button>
 				<Button
 					variant={'solid'}
