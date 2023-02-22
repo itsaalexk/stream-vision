@@ -8,7 +8,8 @@ import { useColor } from '../hooks/useColor'
 
 export const Navbar = () => {
 	const navigate = useNavigate()
-	const { handleModeChange, darkMode } = useColor()
+	const theme = localStorage.getItem('theme')
+	const { handleModeChange, darkMode } = useColor(theme)
 	const handleNavigate = () => {
 		navigate('/auth')
 	}
@@ -41,7 +42,6 @@ export const Navbar = () => {
 				<Button
 					variant={'outline'}
 					colorScheme={'whiteAlpha'}
-					mt={'1%'}
 					sx={{ borderRadius: '100' }}
 				>
 					<GithubSvg />

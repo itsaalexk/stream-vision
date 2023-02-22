@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useColorStore } from '../context/useColorStore'
 
-export const useColor = () => {
+export const useColor = initialState => {
 	const darkMode = useColorStore(state => state.darkMode)
 	const enableDarkMode = useColorStore(state => state.enableDarkMode)
 	const disableDarkMode = useColorStore(state => state.disableDarkMode)
-	const [isDarkMode, setIsDarkMode] = useState(true)
+	const [isDarkMode, setIsDarkMode] = useState(initialState)
+	localStorage.setItem('theme', darkMode)
 
 	const handleModeChange = () => {
 		setIsDarkMode(!isDarkMode)
@@ -16,7 +17,6 @@ export const useColor = () => {
 		if (isDarkMode === false) {
 			disableDarkMode()
 		}
-		console.log(darkMode)
 	}
 
 	return {
