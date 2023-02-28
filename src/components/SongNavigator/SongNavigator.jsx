@@ -1,13 +1,15 @@
 import { Box, Divider } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import { useInput } from '../../context/useInput'
 import { CardItem } from '../Card/Card'
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner'
 
 export const SongNavigator = () => {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
-	console.log(import.meta.env)
-
+	let { input } = useInput()
+	if (input === '') input = 'Coldplay'
+	console.log(input)
 	useEffect(() => {
 		const options = {
 			method: 'GET',
@@ -17,14 +19,13 @@ export const SongNavigator = () => {
 			}
 		}
 		fetch(
-			'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=coldplay',
+			`https://youtube-search-results.p.rapidapi.com/youtube-search/?q=${input}`,
 			options
 		)
 			.then(response => response.json())
 			.then(response => setData(response))
 			.catch(err => console.error(err))
 		setLoading(false)
-		console.log(data)
 	}, [])
 
 	return (
