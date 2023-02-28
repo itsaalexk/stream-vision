@@ -6,13 +6,14 @@ import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner'
 export const SongNavigator = () => {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
+	console.log(import.meta.env)
 
 	useEffect(() => {
 		const options = {
 			method: 'GET',
 			headers: {
-				'X-RapidAPI-Key': '90ac91e5bamsh0a4866e640b8110p17f06djsn426dac2ed4b2',
-				'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+				'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
+				'X-RapidAPI-Host': import.meta.env.VITE_API_HOST
 			}
 		}
 		fetch(
