@@ -3,15 +3,22 @@ import {
 	Card,
 	Text,
 	Stack,
-	Divider,
 	CardBody,
 	CardFooter
 } from '@chakra-ui/react'
 import ReactPlayer from 'react-player'
+import { useColor } from '../../hooks/useColor'
 
 export const CardItem = ({ src, title, url }) => {
+	const { darkMode } = useColor()
 	return (
-		<Card maxW={450} mt={10}>
+		<Card
+			maxW={450}
+			mt={10}
+			variant="outline"
+			backgroundColor={darkMode ? 'black' : 'white'}
+			color={darkMode ? 'white' : 'black'}
+		>
 			<CardBody>
 				<Image src={src} alt={title} borderRadius="lg" />
 				<Stack mt="6" spacing="3">
@@ -19,7 +26,7 @@ export const CardItem = ({ src, title, url }) => {
 					<Text>{title}</Text>
 				</Stack>
 			</CardBody>
-			<Divider />
+
 			<CardFooter></CardFooter>
 		</Card>
 	)
