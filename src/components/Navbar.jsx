@@ -5,14 +5,20 @@ import { MoonSvg } from '../svg/MoonSvg'
 import { HeartSvg } from '../svg/HeartSvg'
 import { useNavigate } from 'react-router-dom'
 import { useColor } from '../hooks/useColor'
+import { useState } from 'react'
 
 export const Navbar = () => {
 	const navigate = useNavigate()
-	const theme = localStorage.getItem('theme')
-	const { handleModeChange, darkMode } = useColor(theme)
+	const { handleModeChange, darkMode } = useColor()
+	const [input, setInput] = useState()
 	const handleNavigate = () => {
 		navigate('/auth')
 	}
+	const handleInputChange = e => {
+		setInput(e.target.value)
+		console.log(input)
+	}
+
 	return (
 		<Box
 			w="100%"
@@ -34,6 +40,8 @@ export const Navbar = () => {
 				sx={{ marginLeft: '10%', marginTop: '1%', color: 'white' }}
 				htmlSize={4}
 				size="md"
+				onChange={handleInputChange}
+				value={input}
 				width={400}
 				variant="outline"
 				placeholder="Introduce aqui el elemento a buscar"

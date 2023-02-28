@@ -8,6 +8,7 @@ export const ErrorPage = () => {
 	const handleClick = () => {
 		navigate(-1)
 	}
+
 	return (
 		<>
 			<Box display={'flex'} justifyContent="center" mt="12%">
