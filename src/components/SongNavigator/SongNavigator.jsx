@@ -1,10 +1,48 @@
 import { Box, Divider } from '@chakra-ui/react'
-import React from 'react'
+import { useEffect, useState } from 'react'
+import { CardItem } from '../Card/Card'
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner'
 
 export const SongNavigator = () => {
+	const [data, setData] = useState([])
+	const [loading, setLoading] = useState(true)
+
+	useEffect(() => {
+		const options = {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': '90ac91e5bamsh0a4866e640b8110p17f06djsn426dac2ed4b2',
+				'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+			}
+		}
+		fetch(
+			'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=coldplay',
+			options
+		)
+			.then(response => response.json())
+			.then(response => setData(response))
+			.catch(err => console.error(err))
+		setLoading(false)
+		console.log(data)
+	}, [])
+
 	return (
-		<Box w={'100%'} h={'600'} backgroundColor="grey">
+		<Box w={'100%'} h={'600'} backgroundColor="white">
 			<Divider orientation="horizontal" />
+
+			{data.items === undefined ? (
+				<LoadingSpinner />
+			) : (
+				data.items.map(video => (
+					<ul>
+						<CardItem
+							src={video.bestThumbnails}
+							title={video.title}
+							url={video.url}
+						/>
+					</ul>
+				))
+			)}
 		</Box>
 	)
 }

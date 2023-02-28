@@ -8,6 +8,7 @@ export const ErrorPage = () => {
 	const handleClick = () => {
 		navigate(-1)
 	}
+	console.log(import.meta.env)
 	return (
 		<>
 			<Box display={'flex'} justifyContent="center" mt="12%">
