@@ -16,7 +16,8 @@ export const Navbar = () => {
 	}
 	const handleInputChange = e => {
 		setInput(e.target.value)
-		console.log(input)
+		console.log('test input')
+		
 	}
 
 	return (
